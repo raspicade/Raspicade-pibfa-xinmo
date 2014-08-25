@@ -1,4 +1,4 @@
-#include "gp2xsdk.h"
+/bin/bash: :syntax: command not found
 #include "burner.h"
 #include "config.h"
 
@@ -153,6 +153,8 @@ void pi_parse_config_file (void)
     int i=0;
 
     open_config_file();
+    //checking for xinmo support
+    config_options.option_xinmo_support = get_integer_conf("Joystick", "XinMoSupport", 0);
 
     config_options.display_smooth_stretch = get_integer_conf("Graphics", "DisplaySmoothStretch", 1);
     config_options.option_display_border = get_integer_conf("Graphics", "DisplayBorder", 0);
@@ -523,6 +525,10 @@ void pi_process_events (void)
                                 else
                                         joy_axes[event.jbutton.which][joyaxis_UD] = UP;
                         }
+			
+			//manage xinmo support
+			if (config_options.option_xinmo_support)
+			{
                         if(event.jaxis.axis == joyaxis_LR_2) {
                                if(event.jaxis.value > -10000 && event.jaxis.value < 10000)
                                         joy_axes[event.jbutton.which][joyaxis_LR_2] = CENTER;
@@ -539,6 +545,7 @@ void pi_process_events (void)
                                 else
                                         joy_axes[event.jbutton.which][joyaxis_UD_2] = UP;
                         }
+			}
 		break;
 		/*		if(event.jaxis.axis == joyaxis_LR) {
 					if(event.jaxis.value > -10000 && event.jaxis.value < 10000)

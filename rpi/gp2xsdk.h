@@ -26,11 +26,11 @@ enum {
 	GP2X_DOWN_RIGHT=1<<5,
 	GP2X_RIGHT=1<<6,
 	GP2X_UP_RIGHT=1<<7,
-    GP2X_START=1<<8,
+        GP2X_START=1<<8,
 	GP2X_SELECT=1<<9,
 	GP2X_L=1<<10,
 	GP2X_R=1<<11,
-    GP2X_A=1<<12,
+        GP2X_A=1<<12,
 	GP2X_B=1<<13,
 	GP2X_X=1<<14,
 	GP2X_Y=1<<15

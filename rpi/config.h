@@ -3,6 +3,7 @@
 
 typedef struct
 {
+	int option_xinmo_support;
 	int option_sound_enable;
 	int option_rescale;
 	int option_samplerate;

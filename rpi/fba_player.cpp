@@ -66,9 +66,13 @@ void do_keypad()
 	FBA_KEYPAD[3] = 0;
 	ServiceRequest = 0;
 	P1P2Start = 0;
-	
+        
+	//manage the xinmo support
+	if (config_options.option_xinmo_support)
+	{	
 	//force joyCount to 2 (for xim-mo module)
 	joyCount = 2;	
+	}
 	//for (int i=0;i<joyCount;i++) {
 	//Always check for two players, i.e. keyboard input
 	for (int i=0;i<joyCount;i++) {
