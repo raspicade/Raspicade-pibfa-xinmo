@@ -1,4 +1,4 @@
-/bin/bash: :syntax: command not found
+#include "gp2xsdk.h"
 #include "burner.h"
 #include "config.h"
 
