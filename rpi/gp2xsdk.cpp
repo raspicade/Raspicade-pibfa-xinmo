@@ -651,34 +651,38 @@ unsigned long pi_joystick_read(int which1)
     
 	//Only handle two players
 	if(which1 > 1) return val;
+
+	int player = which1;
+	if(config_options.option_xinmo_support){player = 0;}
+	//same patch as https://github.com/mholgatem/PiSNES/
     
 	if (which1 == 0) {
-	    if (joy_buttons[0][pi_joy[L_1]])		val |= GP2X_L;
-		if (joy_buttons[0][pi_joy[R_1]])		val |= GP2X_R;
-		if (joy_buttons[0][pi_joy[X_1]])		val |= GP2X_X;
-		if (joy_buttons[0][pi_joy[Y_1]])		val |= GP2X_Y;
-		if (joy_buttons[0][pi_joy[B_1]])		val |= GP2X_B;
-		if (joy_buttons[0][pi_joy[A_1]])		val |= GP2X_A;
-		if (joy_buttons[0][pi_joy[START_1]])	val |= GP2X_START;
-		if (joy_buttons[0][pi_joy[SELECT_1]]) 	val |= GP2X_SELECT;
-		if (joy_axes[0][joyaxis_UD] == UP)          val |= GP2X_UP;
-		if (joy_axes[0][joyaxis_UD] == DOWN)        val |= GP2X_DOWN;
-		if (joy_axes[0][joyaxis_LR] == LEFT)        val |= GP2X_LEFT;
-		if (joy_axes[0][joyaxis_LR] == RIGHT)       val |= GP2X_RIGHT;
+	    if (joy_buttons[player][pi_joy[L_1]])		val |= GP2X_L;
+		if (joy_buttons[player][pi_joy[R_1]])		val |= GP2X_R;
+		if (joy_buttons[player][pi_joy[X_1]])		val |= GP2X_X;
+		if (joy_buttons[player][pi_joy[Y_1]])		val |= GP2X_Y;
+		if (joy_buttons[player][pi_joy[B_1]])		val |= GP2X_B;
+		if (joy_buttons[player][pi_joy[A_1]])		val |= GP2X_A;
+		if (joy_buttons[player][pi_joy[START_1]])	val |= GP2X_START;
+		if (joy_buttons[player][pi_joy[SELECT_1]]) 	val |= GP2X_SELECT;
+		if (joy_axes[player][joyaxis_UD] == UP)          val |= GP2X_UP;
+		if (joy_axes[player][joyaxis_UD] == DOWN)        val |= GP2X_DOWN;
+		if (joy_axes[player][joyaxis_LR] == LEFT)        val |= GP2X_LEFT;
+		if (joy_axes[player][joyaxis_LR] == RIGHT)       val |= GP2X_RIGHT;
 	} else {
 		// joy_buttons[1] to joy_buttons[0] because with xin-mo, only 1 joy
-	    if (joy_buttons[0][pi_joy[L_2]])		val |= GP2X_L;
-		if (joy_buttons[0][pi_joy[R_2]])		val |= GP2X_R;
-		if (joy_buttons[0][pi_joy[X_2]])		val |= GP2X_X;
-		if (joy_buttons[0][pi_joy[Y_2]])		val |= GP2X_Y;
-		if (joy_buttons[0][pi_joy[B_2]])		val |= GP2X_B;
-		if (joy_buttons[0][pi_joy[A_2]])		val |= GP2X_A;
-		if (joy_buttons[0][pi_joy[START_2]])	val |= GP2X_START;
-		if (joy_buttons[0][pi_joy[SELECT_2]]) 	val |= GP2X_SELECT;
-		if (joy_axes[0][joyaxis_UD_2] == UP)          val |= GP2X_UP;
-		if (joy_axes[0][joyaxis_UD_2] == DOWN)        val |= GP2X_DOWN;
-		if (joy_axes[0][joyaxis_LR_2] == LEFT)        val |= GP2X_LEFT;
-		if (joy_axes[0][joyaxis_LR_2] == RIGHT)       val |= GP2X_RIGHT;
+	    if (joy_buttons[player][pi_joy[L_2]])		val |= GP2X_L;
+		if (joy_buttons[player][pi_joy[R_2]])		val |= GP2X_R;
+		if (joy_buttons[player][pi_joy[X_2]])		val |= GP2X_X;
+		if (joy_buttons[player][pi_joy[Y_2]])		val |= GP2X_Y;
+		if (joy_buttons[player][pi_joy[B_2]])		val |= GP2X_B;
+		if (joy_buttons[player][pi_joy[A_2]])		val |= GP2X_A;
+		if (joy_buttons[player][pi_joy[START_2]])	val |= GP2X_START;
+		if (joy_buttons[player][pi_joy[SELECT_2]]) 	val |= GP2X_SELECT;
+		if (joy_axes[player][joyaxis_UD_2] == UP)          val |= GP2X_UP;
+		if (joy_axes[player][joyaxis_UD_2] == DOWN)        val |= GP2X_DOWN;
+		if (joy_axes[player][joyaxis_LR_2] == LEFT)        val |= GP2X_LEFT;
+		if (joy_axes[player][joyaxis_LR_2] == RIGHT)       val |= GP2X_RIGHT;
 	}
     
     if(sdl_keys)
